@@ -13,10 +13,13 @@
             "<div> Email: " . $_POST['message'] . "</div>"
     );
     $msg = new \SendGrid($key);
-
     try{
       $response = $msg->send($send);
-      header("Location: /successuflly");
+      header("Location: Contact.php");
+      echo var_dump($_POST['name']) . " ";
+      echo var_dump($_POST['email']) . " ";
+      echo var_dump($_POST['subject']);
+      echo var_dump($_POST['message']) . "<br>";
     }catch(Exception $e){
         header("Location: /Faild_Sending");
     }
@@ -55,7 +58,7 @@
           </nav>
     </header>
     <div class="container" style="max-width: 50em;">
-        <form method="POST">
+        <form action="" method="POST">
             <div class="mb-3">
                 <label for="name" class="form-label">Full name</label>
                 <input type="text" name="name" class="form-control" id="name">
